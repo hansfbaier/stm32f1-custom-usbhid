@@ -59,35 +59,10 @@ MAIN_MAP = $(MAIN_OUT:%.elf=%.map)
 MAIN_BIN = $(MAIN_OUT:%.elf=%.bin)
 
 MAIN_SRCS = ./Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/system_stm32f1xx.c\
-	./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c\
-	./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c\
-	./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c\
-	./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c\
-	./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c\
-	./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c\
-	./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi_ex.c\
-	./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c\
-	./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c\
-	./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_usb.c\
-	./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c\
-	./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd.c\
-	./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c\
-	./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.c\
-	./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c\
-	./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd_ex.c\
-	./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.c\
-	./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c\
-	./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c\
-	./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c\
-	./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c\
-	./Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/usbd_customhid.c\
-	./Src/usbd_conf.c\
-	./Src/stm32f1xx_it.c\
-	./Src/stm32f1xx_hal_msp.c\
-	./Src/main.c\
-	./Src/usbd_desc.c\
-	./Src/usb_device.c\
-	./Src/usbd_custom_hid_if.c
+	$(wildcard ./Drivers/STM32F1xx_HAL_Driver/Src/*.c)\
+	$(wildcard ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/*.c)\
+	$(wildcard ./Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/*.c)\
+	$(wildcard ./Src/*.c)\
 
 MAIN_OBJS = $(sort \
 	$(patsubst %.c,%.o,$(MAIN_SRCS)) \
