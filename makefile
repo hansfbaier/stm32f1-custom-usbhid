@@ -98,6 +98,8 @@ all: $(MAIN_BIN)
 
 $(MAIN_OUT): $(MAIN_OBJS) $(FWLIB) $(USBLIB)
 	$(LD) $(LDFLAGS) $(TARGET_ARCH) $^ -o $@
+	arm-none-eabi-size -x -A main.elf 
+	arm-none-eabi-size -B main.elf 
 
 $(MAIN_OBJS): $(wildcard ./Drivers/CMSIS/Device/ST/STM32F1xx/Include/*.h) \
  $(wildcard ./Drivers/CMSIS/Include/*.h)\
@@ -113,4 +115,4 @@ $(MAIN_BIN): $(MAIN_OUT)
 clean:
 	find . -name \*.o -exec rm {} \;
 	rm $(MAIN_BIN) $(MAIN_OUT) $(MAIN_MAP)
-	
+
