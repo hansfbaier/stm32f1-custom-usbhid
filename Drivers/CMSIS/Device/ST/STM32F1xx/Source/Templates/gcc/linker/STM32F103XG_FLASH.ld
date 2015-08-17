@@ -142,5 +142,5 @@ SECTIONS
     libm.a ( * )
     libgcc.a ( * )
   }
-  .ARM.attributes : { *(.ARM.attributes) }
+  .ARM.attributes 0 : { *(.ARM.attributes) }
 }
