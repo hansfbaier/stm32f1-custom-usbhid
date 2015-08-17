@@ -63,7 +63,7 @@ static void MX_USART1_UART_Init(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
-
+extern int8_t USBD_CUSTOM_HID_SendReport_FS (uint8_t *report,uint16_t len);
 /* USER CODE END 0 */
 
 int main(void)
@@ -94,10 +94,15 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  uint8_t report = 0;
+
   while (1)
   {
-  /* USER CODE END WHILE */
+    /* USER CODE END WHILE */
+    HAL_Delay(500);
 
+    USBD_CUSTOM_HID_SendReport_FS(&report, 1);
+    report = !report;
   /* USER CODE BEGIN 3 */
 
   }
